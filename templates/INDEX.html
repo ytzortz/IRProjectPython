@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="../static/functions.js"></script>
+    <title>Seach a Movie</title>
+</head>
+<body>
+
+
+
+<div class="container">
+    <input type="text" id="searchInput" placeholder="Enter your search">
+    <button onclick="runSearch();">Search</button>
+
+    <select>
+        <option value="titles">Descriptions</option>
+        <option value="descriptions">Titles</option>
+    </select>
+
+    <br>
+    <br>
+
+    <div>
+        <label>
+            <input type="checkbox" name="checkboxGroup"> Drama
+        </label>
+
+        <label>
+            <input type="checkbox" name="checkboxGroup"> Action
+        </label>
+
+        <label>
+            <input type="checkbox" name="checkboxGroup"> Animation
+        </label>
+
+        <label>
+            <input type="checkbox" name="checkboxGroup"> Comedy
+        </label>
+
+        <label>
+            <input type="checkbox" name="checkboxGroup"> Family
+        </label>
+
+        <label>
+            <input type="checkbox" name="checkboxGroup"> Animation
+        </label>
+
+        <label>
+            <input type="checkbox" name="checkboxGroup"> Animation
+        </label>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    
+    <div style="display:none;" id="results"> <!----edw prepei na balw none-->
+        <h4>Results</h4>
+        <table style="width:100%;" >
+            <tr>
+              <th>Title</th>
+              <th>Tags</th>
+              <th>Country</th>
+            </tr>
+            <tr>
+              <td>Alfreds Futterkiste</td>
+              <td>Maria Anders</td>
+              <td>Germany</td>
+            </tr>
+            <tr>
+              <td>Centro comercial Moctezuma</td>
+              <td>Francisco Chang</td>
+              <td>Mexico</td>
+            </tr>
+          </table>
+    </div>
+
+
+    <button id="initIndex" style="color:green" onclick="initIndex()">Init Index</button>
+    <button id="destroyIndex" style="color:red" onclick="destroyIndex()">Destroy Index</button>
+
+</div>
+</body>
+</html>
