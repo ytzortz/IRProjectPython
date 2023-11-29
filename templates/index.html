@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="../static/functions.js"></script>
+    <title>Search Page</title>
+</head>
+<body>
+
+<div class="container">
+    <input type="text" id="searchInput" placeholder="Enter your search">
+    <button onclick="runSearch()">Search</button>
+
+    <br>
+
+    <select>
+        <option value="titles">titles</option>
+        <option value="descriptions">descriptions</option>
+    </select>
+
+    <br>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup"> Drama
+    </label>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup"> Action
+    </label>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup"> Animation
+    </label>
+    <button id="initIndex" style="color:green" onclick="initIndex()">Init Index</button>
+    <button id="destroyIndex" style="color:red" onclick="destroyIndex()">destroy Index</button>
+
+</div>
+</body>
+</html>
