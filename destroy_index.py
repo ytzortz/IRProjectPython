@@ -9,8 +9,3 @@ def delete_directory(directory_path):
     except Exception as e:
         print(f"An error occurred: {e}")
 
-# Specify the path to the directory you want to delete
-directory_to_delete = "index"
-
-# Call the function to delete the directory
-delete_directory("../index")

@@ -12,12 +12,14 @@
 
 
 <div class="container">
+    <h2>Search a Movie!</h2>
     <input type="text" id="searchInput" placeholder="Enter your search">
     <button onclick="runSearch();">Search</button>
 
-    <select>
-        <option value="titles">Descriptions</option>
-        <option value="descriptions">Titles</option>
+    <select id="dropdown">
+        <option value="descriptions">Descriptions</option>
+        <option value="titles">Titles</option>
+        <option value="both">Both</option>
     </select>
 
     <br>
@@ -114,7 +116,7 @@
     <br>
     <br>
     
-    <div style="display:none;" id="results"> <!----edw prepei na balw none-->
+    <div style="display:none;" id="results">
         <h4>Results</h4>
         <table style="width:100%;" >
             <tr>
@@ -137,7 +139,7 @@
     </div>
 
 
-    <button id="initIndex" style="color:green" onclick="initIndex()">Init Index</button>
+    <button id="initIndex" style="color:green" onclick="initIndex();">Init Index</button>
     <button id="destroyIndex" style="color:red" onclick="destroyIndex()">Destroy Index</button>
 
 </div>

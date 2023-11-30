@@ -1,37 +1,59 @@
+import json
+from collections import Counter
+
 from whoosh import index
 from whoosh.qparser import QueryParser, MultifieldParser
 
-# Step 1: Open the index
-ix = index.open_dir("C:/Users/s0239369/Desktop/projectPython/index")
 
-# Step 2: Create a searcher
-searcher = ix.searcher()
+def searchDatabase(title, genres, query):
 
-# Step 3: Define a query
-query_string = 'jealousy'  # Replace with your  search query
+    # Step 1: Open the index
+    ix = index.open_dir("../index")
 
-# f'{field_name}.name:"Animation"' change animation to any other genre we want
-
-# Step 4: Parse the query
-#parser = QueryParser(fieldname="overview", schema=ix.schema)
-parser = MultifieldParser(["keywords"], schema=ix.schema)
-query = parser.parse(query_string)
-
-# Step 5: Search and print the first 5 results
-results = searcher.search(query, limit=5)
-
-if not results:
-    print("NO RESULTS BRO")
+    # Step 2: Create a searcher
+    searcher = ix.searcher()
 
 
-for result in results:      #if "Drama" in result["genres"]: you can add this to filter the results
-    print("Title:", result["title"])
-    print("Overview:", result["overview"])
-    print("Genres:", result["genres"])
-    print("Keywords:", result["keywords"])
-    print("------")
+    # Step 3: Define a query
+    query_string = query  # Replace with your  search query
+
+    if title == 1:
+        # Search titles
+        fields_to_search = ["title"]
+    else:
+        if title == 2: # search both
+            fields_to_search = ["title", "overview", "keywords"]
+        else:   # search overview
+            fields_to_search = ["overview", "keywords"]
+
+    # f'{field_name}.name:"Animation"' change animation to any other genre we want
+    # Step 4: Parse the query
+    # parser = QueryParser(fieldname="overview", schema=ix.schema)
+    parser = MultifieldParser(fields_to_search, schema=ix.schema)
+    query = parser.parse(query_string)
+
+    results_list = []
+    for result in searcher.search(query, limit=2000):
+        common_genres = set(result["genres"]).intersection(genres)
+        print(f"Result Genres: {result['genres']}")
+        print(f"Common Genres: {len(common_genres)}")
+        result_dict = {
+            "title": result["title"],
+            "common_genres_count": len(common_genres),
+            "genres": result["genres"],
+            "keywords": result["keywords"]
+        }
+        results_list.append(result_dict)
+
+    # Sort the results by the number of common genres
+    sorted_results = sorted(results_list, key=lambda x: x["common_genres_count"], reverse=True)
+
+    # Return only the top 15
+    results_json = json.dumps(sorted_results[:15])
 
 
+    # Step 6: Close the searcher
+    searcher.close()
+    return results_json
 
-# Step 6: Close the searcher
-searcher.close()
+
