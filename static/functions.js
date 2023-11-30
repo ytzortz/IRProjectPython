@@ -33,7 +33,7 @@
             printTitles(results);
 
 
-            //resultsOn();
+            resultsOn(results);
         })
         .catch(error => {
             console.error('Error:', error);
@@ -53,8 +53,6 @@
 
     }
 
-
-
     function checkboxChecking(){
           var checkboxes = document.getElementsByName('checkboxGroup');
           var checkedCheckboxes = [];
@@ -69,10 +67,33 @@
     }
 
 
-
-    function resultsOn(){
+    function resultsOn(retults){
         document.getElementById("results").style.display = "block";
+        let table = getElementById("tableResults");
+
+        var data = [
+            { title: "Title1", tags: "Tag1, Tag2, tag3, tag4", country: "Greece" },
+            { title: "Title2", tags: "Tag3, Tag4, tag5", country: "France" },
+            { title: "Title2", tags: "Tag3, Tag4, tag5", country: "France" },
+            { title: "Title2", tags: "Tag3, Tag4, tag5", country: "France" },
+            { title: "Title2", tags: "Tag3, Tag4, tag5", country: "France" }
+          ];
+
+          // Loop through the data and populate the table
+          for (let i = 0; i < data.length; i++) {
+            var newRow = table.insertRow();
+            var titleCell = newRow.insertCell(0);
+            var tagsCell = newRow.insertCell(1);
+            var countryCell = newRow.insertCell(2);
+
+            // Set the content for each cell using the data array
+            titleCell.innerHTML = data[i].title;
+            tagsCell.innerHTML = data[i].tags;
+            countryCell.innerHTML = data[i].country;
+          }
+
     }
+
 
     function resultsNone(){
         document.getElementById("results").style.display = "none";
@@ -122,5 +143,4 @@
         });
     }
 
-
-
+    
