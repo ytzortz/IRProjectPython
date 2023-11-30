@@ -5,36 +5,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/style.css">
     <script src="../static/functions.js"></script>
-    <title>Search Page</title>
+    <title>Seach a Movie</title>
 </head>
 <body>
 
+
+
 <div class="container">
     <input type="text" id="searchInput" placeholder="Enter your search">
-    <button onclick="runSearch()">Search</button>
-
-    <br>
+    <button onclick="runSearch();">Search</button>
 
     <select>
-        <option value="titles">titles</option>
-        <option value="descriptions">descriptions</option>
+        <option value="titles">Descriptions</option>
+        <option value="descriptions">Titles</option>
     </select>
 
     <br>
+    <br>
 
+    <div>
     <label>
-        <input type="checkbox" name="checkboxGroup"> Drama
+        <input type="checkbox" name="checkboxGroup" value="Documentary"> Documentary
     </label>
 
     <label>
-        <input type="checkbox" name="checkboxGroup"> Action
+        <input type="checkbox" name="checkboxGroup" value="Mystery"> Mystery
     </label>
 
     <label>
-        <input type="checkbox" name="checkboxGroup"> Animation
+        <input type="checkbox" name="checkboxGroup" value="Foreign"> Foreign
     </label>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="Thriller"> Thriller
+    </label>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="History"> History
+    </label>
+    <br>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="Music"> Music
+    </label>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="TV Movie"> TV Movie
+    </label>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="Fantasy"> Fantasy
+    </label>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="Western"> Western
+    </label>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="Family"> Family
+    </label>
+    <br>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="Animation"> Animation
+    </label>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="Comedy"> Comedy
+    </label>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="Fiction"> Fiction
+    </label>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="Horror"> Horror
+    </label>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="Crime"> Crime
+    </label>
+    <br>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="Drama"> Drama
+    </label>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="Adventure"> Adventure
+    </label>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="Action"> Action
+    </label>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="Romance"> Romance
+    </label>
+
+    <label>
+        <input type="checkbox" name="checkboxGroup" value="War"> War
+    </label>
+
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    
+    <div style="display:none;" id="results"> <!----edw prepei na balw none-->
+        <h4>Results</h4>
+        <table style="width:100%;" >
+            <tr>
+              <th>Title</th>
+              <th>Tags</th>
+              <th>Country</th>
+            </tr>
+            <tr>
+              <td>Alfreds Futterkiste</td>
+              <td>Maria Anders</td>
+              <td>Germany</td>
+            </tr>
+            <tr>
+              <td>Centro comercial Moctezuma</td>
+              <td>Francisco Chang</td>
+              <td>Mexico</td>
+            </tr>
+          </table>
+        <br><br><br>
+    </div>
+
+
     <button id="initIndex" style="color:green" onclick="initIndex()">Init Index</button>
-    <button id="destroyIndex" style="color:red" onclick="destroyIndex()">destroy Index</button>
+    <button id="destroyIndex" style="color:red" onclick="destroyIndex()">Destroy Index</button>
 
 </div>
 </body>
