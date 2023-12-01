@@ -28,11 +28,9 @@
 
             let results =  JSON.parse(data.results);
 
-            //console.log(results[0].common_genres_count);
-
            // console.log("results: "+results)
 
-            printTitles(results);
+          //  printTitles(results);
 
 
             resultsOn(results);
@@ -82,7 +80,13 @@
 
             // Set the content for each cell using the data array
             titleCell.innerHTML = results[i].title;
-            genresCell.innerHTML = results[i].genres;
+
+
+           // console.log(extractNames(results[i].genres))
+
+
+
+            genresCell.innerHTML = extractNames(results[i].genres);
 
             var watchButton = document.createElement("button");
             watchButton.innerHTML = "Watch";
@@ -131,7 +135,6 @@
             });
     }
 
-
     function initIndex() {
         fetch('/run-index-script', {
             method: 'POST',
@@ -156,4 +159,17 @@
         table.deleteRow(1);
       }
     }
-    
+
+    function extractNames(inputString) {
+    let resultList = [];
+
+    // Find occurrences of 'name': and extract the values without single quotes
+    const regex = /'name':\s*'([^']*)'/g;
+    let match;
+
+    while ((match = regex.exec(inputString)) !== null) {
+        resultList.push(match[1]);
+    }
+
+    return resultList;
+    }
