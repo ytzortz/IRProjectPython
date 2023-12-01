@@ -26,9 +26,7 @@ def searchDatabase(title, genres, query):
         else:   # search overview
             fields_to_search = ["overview", "keywords"]
 
-    # f'{field_name}.name:"Animation"' change animation to any other genre we want
     # Step 4: Parse the query
-    # parser = QueryParser(fieldname="overview", schema=ix.schema)
     parser = MultifieldParser(fields_to_search, schema=ix.schema)
     query = parser.parse(query_string)
 

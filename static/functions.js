@@ -5,6 +5,8 @@
         let genres = checkboxChecking();
         let titleFlag = dropdownValue();
 
+        clearTable();
+
         if(query === "")
             resultsNone();
         else{
@@ -26,7 +28,7 @@
 
             let results =  JSON.parse(data.results);
 
-            console.log(results[0].common_genres_count);
+            //console.log(results[0].common_genres_count);
 
            // console.log("results: "+results)
 
@@ -67,29 +69,32 @@
     }
 
 
-    function resultsOn(retults){
+    function resultsOn(results){
         document.getElementById("results").style.display = "block";
-        let table = getElementById("tableResults");
-
-        var data = [
-            { title: "Title1", tags: "Tag1, Tag2, tag3, tag4", country: "Greece" },
-            { title: "Title2", tags: "Tag3, Tag4, tag5", country: "France" },
-            { title: "Title2", tags: "Tag3, Tag4, tag5", country: "France" },
-            { title: "Title2", tags: "Tag3, Tag4, tag5", country: "France" },
-            { title: "Title2", tags: "Tag3, Tag4, tag5", country: "France" }
-          ];
+        let table = document.getElementById("tableResults");
 
           // Loop through the data and populate the table
-          for (let i = 0; i < data.length; i++) {
+          for (let i = 0; i < results.length; i++) {
             var newRow = table.insertRow();
             var titleCell = newRow.insertCell(0);
-            var tagsCell = newRow.insertCell(1);
-            var countryCell = newRow.insertCell(2);
+            var genresCell = newRow.insertCell(1);
+            var watchCell = newRow.insertCell(2);
 
             // Set the content for each cell using the data array
-            titleCell.innerHTML = data[i].title;
-            tagsCell.innerHTML = data[i].tags;
-            countryCell.innerHTML = data[i].country;
+            titleCell.innerHTML = results[i].title;
+            genresCell.innerHTML = results[i].genres;
+
+            var watchButton = document.createElement("button");
+            watchButton.innerHTML = "Watch";
+            watchButton.style.backgroundColor = "orange";
+
+            // Assign an empty function to the button's onclick attribute
+            watchButton.onclick = function() {};
+
+            // Append the button to the country cell
+            watchCell.appendChild(watchButton);
+
+
           }
 
     }
@@ -143,4 +148,12 @@
         });
     }
 
+    function clearTable() {
+      var table = document.getElementById("tableResults");
+
+      // Remove all rows except the first one (header row)
+      while (table.rows.length > 1) {
+        table.deleteRow(1);
+      }
+    }
     
