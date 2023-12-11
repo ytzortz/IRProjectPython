@@ -1,7 +1,7 @@
 In order to run this project you have to install some Libraries.
 
 You have to add the dependencies in IDE pyCharm.
-The easiest way to do this is by going to files>settings>Project:NameOfProject and adding them.
+The easiest way to do this is by going to file>settings>Project:NameOfProject and adding them.
 For this project, you have to add an interpent, Flask, and Whoosh.
 
 Python version: 3.11
