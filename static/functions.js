@@ -28,7 +28,9 @@
 
             let results =  JSON.parse(data.results);
 
-           // console.log("results: "+results)
+            console.log("results: "+results[0].perc)
+         //  console.log("Score 1: "+results.perc[0]);
+         //  console.log("Score 2: "+results.perc[1]);
 
           //  printTitles(results);
 
@@ -76,7 +78,8 @@
             var newRow = table.insertRow();
             var titleCell = newRow.insertCell(0);
             var genresCell = newRow.insertCell(1);
-            var watchCell = newRow.insertCell(2);
+            var percCell = newRow.insertCell(2);
+            var watchCell = newRow.insertCell(3);
 
             // Set the content for each cell using the data array
             titleCell.innerHTML = results[i].title;
@@ -88,6 +91,8 @@
 
             genresCell.innerHTML = extractNames(results[i].genres);
 
+            percCell.innerHTML = results[i].perc;
+
             var watchButton = document.createElement("button");
             watchButton.innerHTML = "Watch";
             watchButton.style.backgroundColor = "orange";
@@ -95,7 +100,7 @@
             // Assign an empty function to the button's onclick attribute
             watchButton.onclick = function() {};
 
-            // Append the button to the country cell
+
             watchCell.appendChild(watchButton);
 
 

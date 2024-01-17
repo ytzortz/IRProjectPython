@@ -31,20 +31,24 @@ def searchDatabase(title, genres, query):
     # Check if genres is empty
     if not genres:
         for result in searcher.search(query, limit=2000):
+
             result_dict = {
                 "title": result["title"],
                 "genres": result["genres"],
                 "keywords": result["keywords"],
+                "perc" : "{:.2f} %".format(result.score)
             }
             results_list.append(result_dict)
     else:
         for result in searcher.search(query, limit=2000):
             # Check if at least one genre in the movie matches any genre in the given list
             if any(g in result["genres"] for g in genres):
+                print(result.score)
                 result_dict = {
                     "title": result["title"],
                     "genres": result["genres"],
                     "keywords": result["keywords"],
+                    "perc": "{:.2f} %".format(result.score)
                 }
                 results_list.append(result_dict)
 
